@@ -97,7 +97,6 @@ int main()
     {
         printf("Value at position %d is : %d\n", i, peek(i));
     }
-    free(top);
     return 0;
 }
 /*
