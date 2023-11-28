@@ -55,6 +55,20 @@ struct Node *push(struct Node *top, int valueToPutInNode)
     }
 }
 
+int peek(int position)
+{
+    struct Node *ptr = top;
+    for (int i = 0; (i < position - 1 && ptr != NULL); i++)
+    {
+        ptr = ptr->next;
+    }
+    if (ptr != NULL)
+    {
+        return ptr->data;
+    }
+    return -1;
+}
+
 int pop(struct Node *top)
 {
     if (isEmpty(top))
@@ -63,23 +77,41 @@ int pop(struct Node *top)
     }
     else
     {
-        struct Node *n = top;
+        struct Node *newNode = top;
         top = (top)->next;
-        int poppedElement = n->data;
-        free(n);
+        int poppedElement = newNode->data;
+        free(newNode);
         return poppedElement;
     }
 }
 
 int main()
 {
-    top = push(top, 28);
-    top = push(top, 283);
+    printf("Adress before pop: %u\n", top);
+
+    top = push(top, 29);
+    printf("Adress for 29 pop: %u\n", top);
+
+    top = push(top, 30);
+    printf("Adress for 30 pop: %u\n", top);
+
+    top = push(top, 31);
+    printf("Adress for 31 pop: %u\n\n", top);
 
     linkedListTraversal(top);
+    for (int i = 1; i <= 3; i++)
+    {
+        printf("Value at position %d is : %d\n", i, peek(i));
+    }
+    printf("\nAdress before pop: %u\n", top);
+    // Pop operation must be after Peek operation, that's why, when we popped-out our element then (top) will addressed to the next Node.
+    // In pop() --> Line1: struct Node *newNode = top;  Line2: top = (top)->next; Line3: free(newNode);
+    // Because of these three lines, we lost the address of struct Node -> data., when we pop-out the first element then,
+    // we lose our data, but there's address is the same, hence, we don't have the data in that address and when we try to print data
+    // - at that address, where we were deleted the data, we don't get that data. So, peek() must be executed first before pop().
     int elementPopped = pop(top);
     printf("Popped element is: %d\n", elementPopped);
-
+    printf("\nAdress after pop: %u", top);
     return 0;
 }
 /*
