@@ -24,6 +24,7 @@ int isEmpty(struct Node *top)
     {
         return 1;
     }
+    return 0;
 }
 
 int isFull(struct Node *top)
@@ -34,6 +35,7 @@ int isFull(struct Node *top)
     {
         return 1;
     }
+    return 0; // if stack isn't full return with 0(means false)
 }
 
 struct Node *push(struct Node *top, int valueToPutInNode)
@@ -53,51 +55,31 @@ struct Node *push(struct Node *top, int valueToPutInNode)
     }
 }
 
-int pop(struct Node *tp)
+int pop(struct Node *top)
 {
-    if (isEmpty(tp))
+    if (isEmpty(top))
     {
         printf("Stack Underflow\n");
     }
     else
     {
-        struct Node *n = tp;
-        top = (tp)->next;
-        int x = n->data;
+        struct Node *n = top;
+        top = (top)->next;
+        int poppedElement = n->data;
         free(n);
-        return x;
-    }
-}
-
-int peek(int pos)
-{
-    struct Node *ptr = top;
-    for (int i = 0; (i < pos - 1 && ptr != NULL); i++)
-    {
-        ptr = ptr->next;
-    }
-    if (ptr != NULL)
-    {
-        return ptr->data;
-    }
-    else
-    {
-        return -1;
+        return poppedElement;
     }
 }
 
 int main()
 {
-
     top = push(top, 28);
-    top = push(top, 28);
+    top = push(top, 283);
 
     linkedListTraversal(top);
-    for (int i = 1; i <= 4; i++)
-    {
-        printf("Value at position %d is : %d\n", i, peek(i));
-    }
-    free(top);
+    int elementPopped = pop(top);
+    printf("Popped element is: %d\n", elementPopped);
+
     return 0;
 }
 /*
