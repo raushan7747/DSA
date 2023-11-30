@@ -85,6 +85,11 @@ int pop(struct Node *top)
     }
 }
 
+int stackTopValue(struct Node* top)
+{
+    return top->data;
+}
+
 int main()
 {
     printf("Adress before pop: %u\n", top);
@@ -104,6 +109,7 @@ int main()
         printf("Value at position %d is : %d\n", i, peek(i));
     }
     printf("\nAdress before pop: %u\n", top);
+    printf("The top-most element is the %d\n\n", stackTopValue(top));
     // Pop operation must be after Peek operation, that's why, when we popped-out our element then (top) will addressed to the next Node.
     // In pop() --> Line1: struct Node *newNode = top;  Line2: top = (top)->next; Line3: free(newNode);
     // Because of these three lines, we lost the address of struct Node -> data., when we pop-out the first element then,
