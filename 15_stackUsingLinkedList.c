@@ -104,7 +104,7 @@ int pop(struct Node *top)
     }
 }
 
-int stackTopValue(struct Node* top)
+int stackTopValue(struct Node *top)
 {
     return top->data;
 }
@@ -127,7 +127,6 @@ int main()
     {
         printf("Value at position %d is : %d\n", i, peek(i));
     }
-<<<<<<< HEAD
     printf("\nAdress before pop: %u\n", top);
     printf("The top-most element is the %d\n\n", stackTopValue(top));
     // Pop operation must be after Peek operation, that's why, when we popped-out our element then (top) will addressed to the next Node.
@@ -138,8 +137,6 @@ int main()
     int elementPopped = pop(top);
     printf("Popped element is: %d\n", elementPopped);
     printf("\nAdress after pop: %u", top);
-=======
->>>>>>> 9ab37ca81df40eaa40dc33f09c7794459b13ab51
     return 0;
 }
 /*
