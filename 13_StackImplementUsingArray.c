@@ -1,4 +1,4 @@
-// Not Working properly
+// STACKS are completely opposed to the Linked-list
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,7 +6,7 @@ typedef struct stackArray // ADT_Abstract Data Type
 {
     int size;
     int topValue;     // topValue stores the [index] value,  which denotes the values if they exist in array.
-    int *structArray; // points to the struct stackArray
+    int *structArray;
 
 } ssa;
 int isStackEmpty(struct stackArray *ptr)
