@@ -14,23 +14,12 @@ ssn *insertionAtFirst(ssn *headNode, int value)
     firstNewNode = (ssn *)malloc(sizeof(ssn));
     firstNewNode->data = value;
     firstNewNode->addressOfNext = headNode;
-    return firstNewNode;
+    return headNode;
 }
 // circular linked list traversal
 void linkedListTraversal(ssn *firstNode)
 {
     ssn *pointsToTheHead = firstNode;
-    do
-    {
-        printf("%d", firstNode->data);
-        firstNode = firstNode->addressOfNext;
-    } while (pointsToTheHead != firstNode);
-}
-void linkedListTraversal1(ssn *firstNode)
-{
-    ssn *pointsToTheHead = firstNode;
-    printf("%d", firstNode->data);
-    firstNode = firstNode->addressOfNext;
     do
     {
         printf("%d", firstNode->data);
@@ -63,7 +52,7 @@ int main()
     printf("\n");
     printf("after insertion: ");
     headFirst = insertionAtFirst(headFirst, 91);
-    linkedListTraversal1(headFirst);
+    linkedListTraversal(headFirst);
 
     free(headFirst);
     free(secondNode);
